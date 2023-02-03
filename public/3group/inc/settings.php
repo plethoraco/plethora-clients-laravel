@@ -31,7 +31,7 @@ $GLOBALS['settings']['themes'] = array(
     ),
     3 => array(
         'name' => 'B3',
-        'domain' => 'b3buildingmaintenance.co.nz',
+        'domain' => 'b3buildings.co.nz',
     ),
     4 => array(
         'name' => 'C3',
@@ -42,5 +42,3 @@ $GLOBALS['settings']['themes'] = array(
         'domain' => 'd3development.co.nz',
     )
 );
-
-?>
