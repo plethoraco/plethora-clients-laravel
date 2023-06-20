@@ -25,6 +25,10 @@ $GLOBALS['settings']['themes'] = array(
         'name' => '3Group',
         'domain' => '3group.co.nz',
     ),
+    6 => array(
+        'name' => '3Capital',
+        'domain' => '3capital.co.nz',
+    ),
     2 => array(
         'name' => 'A3',
         'domain' => 'a3assetmanagement.co.nz',
