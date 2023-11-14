@@ -36,7 +36,7 @@ require_once(dirname(__FILE__) . '/inc/functions.php');
 			</fieldset>
 			<fieldset>
 				<label for="email">Email</label>
-				<input type="email" name="email" id="email" value="<?php echo v('email')?>" maxlength="50" required="required">
+				<input type="email" name="email" id="email" value="<?php echo v('email')?>" maxlength="50" required="required" readonly>
 				<div class="inputStatus" id="dirtyEmailStatus">You've edited this email directly, it will no longer update automatically</div>
 			</fieldset>
 			<fieldset>
