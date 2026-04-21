@@ -35,7 +35,7 @@ $GLOBALS['settings']['themes'] = array(
     ),
     3 => array(
         'name' => 'B3',
-        'domain' => 'b3buildings.co.nz',
+        'domain' => 'b3interiors.co.nz',
     ),
     4 => array(
         'name' => 'C3',
