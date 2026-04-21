@@ -80,7 +80,7 @@ function template($template, $vars, $variant = 'main') {
 	}
 	$code = file_get_contents($file);
 	$code = stripSingleTag($code, 'body');
-	
+
 	// Hide empty optional blocks
 	$optionalFields = array('ddi');
 	foreach ($optionalFields as $f) {
@@ -91,16 +91,16 @@ function template($template, $vars, $variant = 'main') {
 			$code = stripSingleTag($code, $blockName);
 		}
 	}
-	
+
 	// Replace vars
-	$uppercaseFields = array('name');
+	$uppercaseFields = ($template == 3) ? array() : array('name');
 	foreach ($vars as $key => $value) {
 		if (in_array($key, $uppercaseFields)) {
 			$value = strtoupper($value);
 		}
 		$code = str_replace('{' . $key . '}', nl2br(sanitizeString($value)), $code);
 	}
-	
+
 	// Wrap it up
 	$code = minifyHtml($code);
 	return $code;

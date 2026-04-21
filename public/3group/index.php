@@ -9,6 +9,7 @@ require_once(dirname(__FILE__) . '/inc/functions.php');
 <head>
 	<title>3Group Signature Builder</title>
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Newsreader:ital,opsz@0,6..72;1,6..72&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/builder.css?v=<?php echo $GLOBALS['settings']['version'] ?>" />
 </head>
 <body>
