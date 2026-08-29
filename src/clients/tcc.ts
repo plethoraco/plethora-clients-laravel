@@ -16,7 +16,6 @@ const nzmaAddresses: readonly Address[] = [
 export const tccConfig: ClientConfig = {
   id: "tcc",
   title: "UP Education Signature Builder",
-  intro: "Create a signature for your school and campus.",
   basePath: "/tcc/signature-builder",
   brandLabel: "School",
   autoGenerateEmail: false,

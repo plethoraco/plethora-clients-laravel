@@ -3,7 +3,6 @@ import type { ClientConfig } from "../core/types";
 export const threeGroupConfig: ClientConfig = {
   id: "3group",
   title: "3Group Signature Builder",
-  intro: "Create a consistent signature for your 3Group brand.",
   basePath: "/3group",
   brandLabel: "Brand",
   autoGenerateEmail: true,

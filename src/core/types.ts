@@ -13,7 +13,6 @@ export interface Brand {
 export interface ClientConfig {
   id: "3group" | "tcc";
   title: string;
-  intro: string;
   basePath: string;
   brandLabel: string;
   brands: readonly Brand[];

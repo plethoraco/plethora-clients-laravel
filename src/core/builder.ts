@@ -70,10 +70,8 @@ function appMarkup(config: ClientConfig): string {
   return `
     <div class="page-shell">
       <header class="page-header">
-        <a class="back-link" href="/">Plethora client tools</a>
         <p class="eyebrow">Email signatures</p>
         <h1>${config.title}</h1>
-        <p class="lede">${config.intro}</p>
       </header>
 
       <section class="card form-card" aria-labelledby="details-heading">
