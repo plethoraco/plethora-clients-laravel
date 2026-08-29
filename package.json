@@ -1,28 +1,26 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    },
-    "devDependencies": {
-        "axios": "^0.21",
-        "bootstrap": "^4.1.0",
-        "cross-env": "^5.1",
-        "jquery": "^3.2",
-        "laravel-mix": "^5.0.0",
-        "lodash": "^4.17.19",
-        "popper.js": "^1.12",
-        "resolve-url-loader": "^3.1.2",
-        "sass": "^1.15.2",
-        "sass-loader": "^7.1.0",
-        "vue": "^2.5.17"
-    },
-    "resolutions": {
-        "laravel-mix/webpack/terser-webpack-plugin/cacache/ssri": "^6.0.2"
-    }
+  "name": "plethora-client-tools",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:debug": "npm run build && playwright test --debug",
+    "verify": "npm run typecheck && npm run test && npm run test:e2e && wrangler deploy --dry-run --env=\"\"",
+    "deploy": "npm run build && wrangler deploy --env production"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1",
+    "@types/node": "^26.4.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2",
+    "vitest": "^4.1.11",
+    "wrangler": "^4.127.1"
+  }
 }

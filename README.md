@@ -1,22 +1,50 @@
-# Laravel 5.8 with a Docker PHP Image
+# Plethora client tools
 
-A demo repo for deploying a Laravel PHP application on [Render](https://render.com) using Docker. You can follow the getting started tutorial [here](https://render.com/docs/deploy-php-laravel-docker).
+Static, browser-based tools hosted at `https://clients.plethora.co`.
 
+The repository currently provides:
+
+- `/3group/` — 3Group email signature builder
+- `/tcc/signature-builder/` — UP Education email signature builder
+- The existing template image paths used by installed email signatures
+
+There is no application server, database, or persistent storage. Vite builds the TypeScript interface and Cloudflare Workers Static Assets serves the output.
+
+## Local development
+
+Requires Node.js 22 or newer.
+
+```bash
+npm install
+npm run dev
+```
+
+Run all checks:
+
+```bash
+npm run verify
+```
+
+This performs a strict TypeScript check, unit and public-asset compatibility tests, a production build, and a Wrangler dry run.
+
+It also runs the Chromium end-to-end suite, which covers every customer template, form submission, clipboard operations, instruction tabs, referenced image responses, and mobile layouts. Install its browser once on a development machine with:
+
+```bash
+npx playwright install chromium
+```
+
+## Public URL contract
+
+Files below these directories may be embedded in emails and must not be renamed or removed:
+
+```text
+public/3group/templates/*/images/*
+public/tcc/signature-builder/templates/*/images/*
+public/tcc/signature-builder/uploads/*
+```
+
+The builder always emits image URLs on `https://clients.plethora.co`, including when it is running on a preview URL.
 
 ## Deployment
 
-1. [Create](https://dashboard.render.com/new/database) a new PostgreSQL database on Render and copy the internal DB URL to use below.
-
-2. Fork this repo to your own GitHub account.
-
-3. Create a new **Web Service** on Render, and give Render's GitHub app permission to access your new repo.
-
-4. Select `Docker` for the environment, and add the following environment variable under the *Advanced* section:
-
-   | Key             | Value           |
-   | --------------- | --------------- |
-   | `DATABASE_URL`  | The **internal connection string** for the database you created above. |
-   | `DB_CONNECTION`  | `pgsql` |
-   | `APP_KEY`  | Copy the output of `php artisan key:generate --show` |
-
-That's it! Your Laravel 5.8 app will be live on your Render URL as soon as the build finishes. You can test it out by registering and logging in.
+See [Cloudflare migration and deployment](docs/cloudflare-deployment.md).
