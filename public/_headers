@@ -8,10 +8,10 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-/3group/templates/*/images/*
+/3group/templates/:template/images/*
   Cache-Control: public, max-age=3600, must-revalidate
 
-/tcc/signature-builder/templates/*/images/*
+/tcc/signature-builder/templates/:template/images/*
   Cache-Control: public, max-age=3600, must-revalidate
 
 /tcc/signature-builder/uploads/*
