@@ -4,7 +4,7 @@
 
 - `laravel-production-final` is the annotated tag for the last Laravel production revision.
 - `cloudflare-migration` contains the static rewrite and is merged through a pull request.
-- `master` remains the production branch. Rename it separately, after the hosting migration, if desired.
+- `main` is the production branch. Pull requests are verified before merge, and every push to `main` is verified and deployed automatically.
 
 ## Cloudflare setup
 
@@ -14,11 +14,10 @@ Before the first production deployment:
 
 1. Add `plethora.co` as an active zone in the intended Cloudflare account.
 2. Create a scoped API token that can deploy Workers and manage the required Worker route/custom domain.
-3. Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as GitHub Actions secrets.
-4. Protect the GitHub `production` environment if deployment approval is desired.
-5. Confirm the current `clients.plethora.co` DNS record and reduce its TTL before cutover.
+3. Add `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` as repository-level GitHub Actions secrets.
+4. Confirm the current `clients.plethora.co` DNS record and record its value for rollback before cutover.
 
-The production workflow is manual so merging code cannot unexpectedly move the custom domain. Start it from GitHub Actions after the cutover checks are complete.
+The production workflow runs automatically after a push or merge to `main`. It runs all checks before deploying, so no terminal deployment or separate approval is required. A manual workflow trigger remains available for recovery.
 
 ## Preview
 
@@ -43,9 +42,9 @@ This publishes the preview/root Worker without attaching `clients.plethora.co`. 
 ## Cutover
 
 1. Keep the existing Render service running.
-2. Merge `cloudflare-migration` into `master`.
-3. Start and monitor the production GitHub Actions deployment.
-4. Attach/verify `clients.plethora.co` and remove its conflicting legacy DNS record when prompted.
+2. Remove the conflicting legacy `clients.plethora.co` DNS record immediately before the first production merge.
+3. Merge `cloudflare-migration` into `main`; this automatically starts the production GitHub Actions deployment.
+4. Monitor the workflow while Cloudflare attaches `clients.plethora.co` and creates its replacement DNS record and certificate.
 5. Check both builder pages, all permanent image paths, redirects from `index.php`, and response headers.
 6. Monitor requests and errors before decommissioning Render.
 
