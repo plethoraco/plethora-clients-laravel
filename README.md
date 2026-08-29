@@ -27,6 +27,12 @@ npm run verify
 
 This performs a strict TypeScript check, unit and public-asset compatibility tests, a production build, and a Wrangler dry run.
 
+It also runs the Chromium end-to-end suite, which covers every customer template, form submission, clipboard operations, instruction tabs, referenced image responses, and mobile layouts. Install its browser once on a development machine with:
+
+```bash
+npx playwright install chromium
+```
+
 ## Public URL contract
 
 Files below these directories may be embedded in emails and must not be renamed or removed:
